@@ -22,7 +22,7 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,7 +54,9 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Star Applying</a>
+        <a className="text-white px-6 py-4 bg-[#556af3] font-bold rounded-lg">
+          Star Applying
+        </a>
       </div>
     </div>
   );

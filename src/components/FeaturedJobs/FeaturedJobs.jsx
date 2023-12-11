@@ -14,8 +14,10 @@ const FeaturedJobs = () => {
   return (
     <div>
       <div className="text-center">
-        <h2 className="text-5xl">Featured Jobs: {jobs.length}</h2>
-        <p>
+        <h2 className="text-5xl font-bold text-[#1A1919]  pt-32">
+          Featured Jobs
+        </h2>
+        <p className="font-medium text-[#757575] pt-4 pb-8">
           Explore thousands of job opportunities with all the information you
           need. Its your future
         </p>

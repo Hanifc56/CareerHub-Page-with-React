@@ -5,11 +5,13 @@ import Header from "../Header/Header";
 const Root = () => {
   return (
     <div>
-      <div className="max-w-6xl mx-auto">
-        <Header></Header>
-        <Outlet></Outlet>
+      <div className="bg-gradient-to-r from-[#eceefa] to-[#e2ddf1]">
+        <div className="max-w-6xl mx-auto">
+          <Header></Header>
+          <Outlet></Outlet>
+        </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

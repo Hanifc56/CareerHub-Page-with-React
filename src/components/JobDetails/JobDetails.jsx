@@ -51,7 +51,7 @@ const JobDetails = () => {
           </p>
         </div>
         <div className=" my-6 w-full md:grid-cols-1">
-          <div className="rounded-lg bg-[#c8cdef] p-4">
+          <div className="rounded-lg bg-[#c9cce1] p-4">
             <h4 className="text-xl text-[#1A1919] font-extrabold border-b-2 border-b-[#9873FF] pb-5">
               Job Details
             </h4>
