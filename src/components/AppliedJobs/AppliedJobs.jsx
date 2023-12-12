@@ -4,10 +4,28 @@ import { useLoaderData } from "react-router-dom";
 import DetailsBanner from "../DetailsBanner/DetailsBanner";
 import { useEffect, useState } from "react";
 import { getStoredJobApplication } from "../../utility/localstorage";
+import { CiFilter } from "react-icons/ci";
 
 const AppliedJobs = () => {
   const jobs = useLoaderData();
   const [appliedJobs, setAppliedjobs] = useState([]);
+  const [displayJobs, setDisplayJobs] = useState([]);
+
+  const handleJobsFilter = (filter) => {
+    if (filter === "all") {
+      setDisplayJobs(appliedJobs);
+    } else if (filter === "remote") {
+      const remoteJobs = appliedJobs.filter(
+        (job) => job.remote_or_onsite === "Remote"
+      );
+      setDisplayJobs(remoteJobs);
+    } else if (filter === "onsite") {
+      const onsiteJobs = appliedJobs.filter(
+        (job) => job.remote_or_onsite === "Onsite"
+      );
+      setDisplayJobs(onsiteJobs);
+    }
+  };
 
   useEffect(() => {
     const storedJobIds = getStoredJobApplication();
@@ -21,15 +39,31 @@ const AppliedJobs = () => {
         }
       }
       setAppliedjobs(jobsApplied);
+      setDisplayJobs(jobsApplied);
       console.log(jobs, storedJobIds, jobsApplied);
     }
-  }, []);
+  }, [jobs]);
   return (
     <div>
       <DetailsBanner details={"Applied Jobs"}></DetailsBanner>
-
+      <div className="flex justify-end">
+        <details className="dropdown">
+          <summary className="m-1 btn">Filter By</summary>
+          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <li onClick={() => handleJobsFilter("all")}>
+              <a>All</a>
+            </li>
+            <li onClick={() => handleJobsFilter("remote")}>
+              <a>Remote</a>
+            </li>
+            <li onClick={() => handleJobsFilter("onsite")}>
+              <a>Onsite</a>
+            </li>
+          </ul>
+        </details>
+      </div>
       <div className="grid grid-cols-1 gap-6 my-12">
-        {appliedJobs.map((jobs) => (
+        {displayJobs.map((jobs) => (
           <div jobs={jobs} key={jobs.id}>
             <div className="flex items-center bg-base-100  rounded-lg border border-[#E8E8E8]">
               <div className="w-[240px] h-[240px]  m-10 bg-[#F4F4F4] rounded-lg ">
